@@ -21,6 +21,7 @@ import Mark from './Mark';
 import Group from './Group';
 import UserGroup from './UserGroup';
 import File from './File';
+import Test from './Test';
 
 User.hasMany(UserLogin, {
   foreignKey: 'userId',
@@ -70,6 +71,12 @@ User.belongsToMany(Course, {
 User.hasMany(File, {
   as: 'files',
 });
+
+User.hasMany(Test, {
+  as: 'tests',
+});
+
+Test.belongsTo(User, { as: 'author' });
 
 Course.belongsToMany(User, {
   as: 'users',
